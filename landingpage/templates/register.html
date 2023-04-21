@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+  <h1 id="sign-head">Create an Account</h1>
+  <form class="signin-container" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+    <br>
+    <a id="already" href="{% url 'login' %}">
+        Already Register?
+    </a>
+  </form>
+  
+{% endblock %}

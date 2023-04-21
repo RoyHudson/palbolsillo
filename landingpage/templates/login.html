@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1 id="sign-head">Log In</h1>
+  <form class="signin-container" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Log In</button>
+    <a id="already" href="{% url 'signup' %}">
+        New User?
+    </a>
+  </form>
+{% endblock %}
