@@ -150,6 +150,9 @@
        .sort-container-inside strong.form-check-label{
         font-size: 18px;
        }
+       .close-page-desc{
+        max-height: 30px;
+       }
         @media screen and (max-width: 991px) {     
             
             .buscador-tienda-cont,
@@ -205,7 +208,10 @@
         .page-desc{
             background: #91b1a21c;
         }
-        @media screen and (min-width: 992px) {         
+        @media screen and (min-width: 992px) {
+            .page-desc{
+                margin: auto -20px;
+            }
             .buscador-productos {
                 position: sticky;
                 top: 0;
@@ -242,11 +248,11 @@
             border-color: #3dab78;
         }
     .footer {
-    color: black;
-    text-align: center;
-    font-family: 'Sarabun', sans-serif;
-    font-weight: 800;
-  }
+        color: black;
+        text-align: center;
+        font-family: 'Sarabun', sans-serif;
+        font-weight: 800;
+    }
     </style>
 </head>
 <body>
@@ -292,7 +298,7 @@
         <div class="page-desc alert alert-secondary d-flex justify-content-between" style="padding-bottom: 25px; border-bottom: 2px solid #ddd;">
           
             <div> 
-                <h2>Compara precios con 3 simples pasos</h2>
+                <h2>Compara precios en 3 simples pasos</h2>
                 <ol>
                     <li>
                         <p class="m-0">Busca productos y ordenalos utilizando los controles de búsqueda.</p>
@@ -306,11 +312,10 @@
                 </ol>
             </div>
 
-            <div class="close-page-desc-container">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-            </div>
+            <button type="button" class="close close-page-desc" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            
             
         </div>
 
@@ -736,8 +741,10 @@
         }
         const handleCLicks = (e) => {
             
-            if (e.target.matches('.close-page-desc-container, .close-page-desc-container>*')) {
-                e.target.parentElement.parentElement.remove()
+            if (e.target.matches('.close-page-desc, .close-page-desc span')) {
+                e.target.tagName == 'BUTTON' 
+                    ? e.target.parentElement.remove()
+                    : e.target.parentElement.parentElement.remove()
             }
             if (e.target.classList.contains('comparar-btn')) {
                 agregarQuitarproductos(e)
