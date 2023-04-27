@@ -18,6 +18,20 @@
     <script src="https://kit.fontawesome.com/d018e24280.js" crossorigin="anonymous"></script>
 
     <style>
+        .navbar.navbar-light{
+            width: 99%;
+            margin: 8px auto;
+            border-radius: 10px;
+        }
+
+        .navbar.navbar-light a.nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 200;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 17px;
+        }
+
         .no-script-msg {
             font-size: 25px;
             position: absolute;
@@ -27,7 +41,22 @@
             bottom: 25%;
             margin: auto;
         }
+        li.nav-item {
+            margin-right: 42px;
+        }
 
+        .container-fluid{
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 20px;
+        }
+        #navbarNav{
+            flex-grow: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #e7e6e1;
+        }
         .buscador-productos label {
             color: #333;
             font-size: 15px;
@@ -88,7 +117,7 @@
             cursor: pointer;
         }
         .comaprarProductosModal .modal-body{
-            background: beige;
+            background: #e7e6e1;
         }
         .comaprarProductosModal .modal-footer{
             justify-content: initial;
@@ -115,7 +144,12 @@
             text-transform: uppercase;
             width: 100%;
         }
-       
+        .buscador-resultados-titulo strong{
+            font-style: italic;
+        }
+       .sort-container-inside strong.form-check-label{
+        font-size: 18px;
+       }
         @media screen and (max-width: 991px) {     
             
             .buscador-tienda-cont,
@@ -147,6 +181,24 @@
             }
             figure.supermercado-logo-4 img{
                 max-height:45px;
+            }
+            .buscador-productos{
+                width: 88%;
+                margin: auto;
+                padding: 5px 17px 15px;
+            }
+            .buscador-input-container{
+                width: 100%;
+                display: block;
+            }
+            .sort-container {
+                width: 99%;
+                margin: auto;
+                flex-direction: column-reverse !important;
+                 display: flex !important;
+            }
+            .buscador-resultados-titulo{
+                margin-top: 25px !important;
             }
 
         }     
@@ -197,7 +249,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'palbolsillo' %}">
+          <a class="navbar-brand" href="/landingpage/">
             <img src="{% static 'img/pocket.png' %}" alt="" width="50" height="50" class="d-inline-block align-text-top">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -205,17 +257,25 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'index' %}">Info</a>
+                <a class="nav-link" href="{% url 'team' %}">Equipo
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'team' %}">Team</a>
+                <a class="nav-link" href="{% url 'team' %}">Pruebala Hoy!
+                </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'antojitos' %}">Antojitos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Ubica tu Super!</a>
+                <a class="nav-link" href="{% url 'antojitos' %}">Ubica tu Super!</a>
+              </li>
+             
+       
+              <li class="nav-item">
+                <a class="nav-link" href="/landingpage/signup/">Registrate</a>
               </li>
             </ul>
           </div>
@@ -223,9 +283,24 @@
       </nav>
 
     <br />
-    <br />
 
-    <div class="container">
+    <div class="container comparador-main-app">
+
+        <div class="page-desc" style="padding-bottom: 25px; border-bottom: 2px solid #ddd;">
+            <h2>Compara precios con 3 simples pasos</h2>
+  
+            <ol>
+                <li>
+                    <p class="m-0">Busca productos y ordenalos utilizando los controles de búsqueda.</p>
+                </li>
+                <li>
+                    <p class="m-0">Agregalos a la comparación presionando el botón verde de cada producto.</p>
+                </li>
+                <li>
+                    <p class="m-0">En la barra inferior, presiona el botón "Ver comparación".</p>
+                </li>
+            </ol>
+        </div>
 
         <div class="modal fade d-none comaprarProductosModal" id="comaprarProductosModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalXLLabel" aria-hidden="true">
@@ -267,22 +342,22 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-2 col-md-3 mb-3 buscador-productos">
+        <div class="row" style="padding-top: 25px;"">
+            <div class="col-lg-2 col-md-3 mb-3 buscador-productos card">
                 <div class="input-group mb-3">
 
                     <div class="py-2 pe-3">
                         <strong class="main-label">Buscador</strong>
                     </div>
 
-                    <div>
+                    <div class="buscador-input-container">
                         <input type="text" class="form-control" name="buscador" id="buscador"
                             placeholder="Nombre del producto..." aria-label="Buscar productos"
                             aria-describedby="button-addon2">
                     </div>
                 </div>
                 
-                <button type="button" class="btn btn-light  d-md-none mostrar-filtros">Filtrar</button>
+                <button type="button" class="btn btn-light  d-lg-none mostrar-filtros">Filtrar</button>
 
                 <div class="container buscador-tienda-cont mb-3">
                     <div class="row">
@@ -306,13 +381,13 @@
 
             </div>
 
-            <div class="col-md-9 position-relative">
+            <div class="col-lg-9 col-md-12 position-relative">
                 <div class="spinner-border text-primary loading-productos-spiner d-none" role="status"></div>
+                
                 <div class="container">
                     <div class="row sort-container d-flex justify-content-end">
-                        <div class="sort-container-inside col-lg-4">
-
-                        </div>
+                        <h4 class="col-lg-8 buscador-resultados-titulo my-auto"></h4>
+                        <div class="sort-container-inside col-lg-4 text-end"></div>
                     </div>
 
                     <div class="row mt-4 productos-container">
@@ -338,6 +413,7 @@
             const container = document.querySelector('.productos-container')
             const params = {}
             const { nombreProducto = '', selectedSortBy, checkboxes } = getSearchParams()
+            const resultadosTitulo = document.querySelector('.buscador-resultados-titulo')
 
             if (e) {
                 params.nombreProducto = e.target.value
@@ -363,6 +439,9 @@
             productos.forEach((producto) => {
                 container.innerHTML += productoHtml(producto)
             })
+
+            if(resultadosTitulo)
+                resultadosTitulo.innerHTML=`Mostrando resultados de: <strong class="text-primary">${params.nombreProducto}</strong>`
 
             toggleProductosSpiner()
             lazyLoadImages()
@@ -528,10 +607,11 @@
             });
         };
         const crearSortSelectHtml = (sortOptions) => {
-            const label = document.createElement('label')
-            label.classList.add('form-check-label', 'text-uppercase');
-            label.textContent = ''
+            const label = document.createElement('strong')
+            label.classList.add('form-check-label');
+            label.textContent = 'Ordenado por'
             label.setAttribute('for', 'ordenar-por')
+            label.setAttribute('style', 'padding-bottom: 6px; display: block;')
 
             const select = document.createElement('select')
             select.classList.add('form-select')
@@ -546,7 +626,7 @@
             }
 
             const container = document.querySelector('.sort-container .sort-container-inside')
-            container.classList.add('d-flex', 'justify-content-end')
+           // container.classList.add('d-flex', 'justify-content-end')
             container.appendChild(label)
             container.appendChild(select)
         }
@@ -761,8 +841,8 @@
             const sortOptions = [
                 { value: 'precio-mas-bajo', label: 'Precio más bajo' },
                 { value: 'precio-mas-alto', label: 'Precio más alto' },
-                { value: 'nombre-ascendente', label: 'Nombre ascendente' },
-                { value: 'nombre-descendente', label: 'Nombre descendente' },
+                { value: 'nombre-ascendente', label: 'Nombre producto A-Z' },
+                { value: 'nombre-descendente', label: 'Nombre producto Z-A' },
                 { value: 'tienda-ascendente', label: 'Tienda A-Z' },
                 { value: 'tienda-descendente', label: 'Tienda Z-A' },
             ]

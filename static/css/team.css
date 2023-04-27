@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap');
+
+.container-team {
+    display: flex;
+    animation-duration: 0.5s;
+    animation-name: animate-fade;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes animate-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+.container-team img {
+    width: 200px;
+    border-radius: 180px;
+}
+.develop-team {
+    padding: 20px;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+#roy {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+    flex: 1;
+}
+
+#nico {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#sergio {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#henry {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#braulio {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#dylan {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#henry-1 {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#erick {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#thalia {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#dayan {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+#guille {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+
+#jorge {
+    width: 350px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+
+#mayron {
+    width: 1000px;
+    height: 400px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+    margin-left: 300px;
+}
+p {
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 300;
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 700;
+    text-align: center;  
+}
+
+h1 {
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 800;
+    text-align: center;   
+}
+
+.text-container {
+    text-align: center;
+    
+}
+
+#quienes-somos {
+    width: 800px;
+    padding: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+#quienes-somos h3 {
+    color: #0f6fb9;
+}
+
+#objetivo {
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    flex: 1;
+    padding: 50px;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+
+.img-container {
+    animation-duration: 0.5s;
+    animation-name: animate-pop;
+    animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.img-module1 {
+    display: flex;
+}
+
+.img-module2 {
+    display: flex;
+}
+
+#image-group {
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+#image-salon {
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: 20px;
+}
+
+@keyframes animate-pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.5, 0.5);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }

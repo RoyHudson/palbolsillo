@@ -1,0 +1,129 @@
+@media screen and (max-width: 900px) {
+
+    *:not(img):not(a):not(i):not(input) {
+      max-width: 100% !important;
+      width: 100% !important;
+      overflow-x: hidden !important;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      border: 0;
+      padding: 0;
+    }
+
+    .img-container{
+      max-width: auto;
+      margin: 0;
+    }
+    .container-team,
+    .img-module2,
+    .img-module1{
+      flex-direction: column;
+    }
+
+    #mayron{
+      margin: auto;
+    }
+    #quienes-somos{
+      margin: 0;
+    }
+    .develop-team > div{
+      overflow: hidden;
+    }
+    p, li{
+      font-size: 20px;
+      line-height: 1.45;
+      max-height: initial !important;
+    }
+    .container {
+      flex-direction: column;
+      padding: 35px;
+      max-width: 100% !important;
+      margin: auto !important;
+  }
+  .container-1 {
+    flex-direction: column;
+      padding: 35px;
+      max-width: 100% !important;
+      margin: auto !important;
+  }  
+    .container button{
+      width: 100%;
+      margin: 0;
+    }
+    .subscribe__title{
+      text-align: center;
+    }
+    .subscribe .form{
+      display: flex;
+      flex-direction: column;
+    }
+    .subscribe .form button{
+      display: inline;
+      height: initial;
+      width: 50% !important;
+      margin: 15px auto 0 auto;
+    }
+    .notice{
+      padding: 0 15px;
+    }
+    video{
+      margin: -329px auto -433px auto;
+       transform: scale(1.3);
+    }
+
+    .wrapper{
+        position: initial !important;
+    }
+    .navbar-hamburger{
+   
+        text-align: right;
+    }
+    .navbar-buttons{
+        position: absolute;
+        top: 100px;
+        margin: 0;
+        right: 0;
+        background: #ddd;
+        padding: 0;
+        z-index: 999999;
+    }
+    .navbar-buttons ul{
+        margin: 0;
+    }
+    .navbar-buttons ul li{
+        margin: 0;
+        padding: 10px 0;
+    }
+    .show-m{
+        display: block !important
+    }
+    .container button{
+      font-size: 16px !important;
+      font-weight: bold !important;
+    }
+
+    #image-group,
+    #image-salon{
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .develop-team > div{
+        height: 440px !important;
+    }
+    .develop-team > div#mayron{
+        height: 500px !important;
+    }
+    .socialmedia i{
+        line-height: 1;
+    }
+
+
+  }
