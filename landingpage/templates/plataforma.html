@@ -202,6 +202,9 @@
             }
 
         }     
+        .page-desc{
+            background: #91b1a21c;
+        }
         @media screen and (min-width: 992px) {         
             .buscador-productos {
                 position: sticky;
@@ -286,20 +289,29 @@
 
     <div class="container comparador-main-app">
 
-        <div class="page-desc" style="padding-bottom: 25px; border-bottom: 2px solid #ddd;">
-            <h2>Compara precios con 3 simples pasos</h2>
-  
-            <ol>
-                <li>
-                    <p class="m-0">Busca productos y ordenalos utilizando los controles de búsqueda.</p>
-                </li>
-                <li>
-                    <p class="m-0">Agregalos a la comparación presionando el botón verde de cada producto.</p>
-                </li>
-                <li>
-                    <p class="m-0">En la barra inferior, presiona el botón "Ver comparación".</p>
-                </li>
-            </ol>
+        <div class="page-desc alert alert-secondary d-flex justify-content-between" style="padding-bottom: 25px; border-bottom: 2px solid #ddd;">
+          
+            <div> 
+                <h2>Compara precios con 3 simples pasos</h2>
+                <ol>
+                    <li>
+                        <p class="m-0">Busca productos y ordenalos utilizando los controles de búsqueda.</p>
+                    </li>
+                    <li>
+                        <p class="m-0">Agregalos a la comparación presionando el botón verde de cada producto.</p>
+                    </li>
+                    <li>
+                        <p class="m-0">En la barra inferior, presiona el botón "Ver comparación".</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="close-page-desc-container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            
         </div>
 
         <div class="modal fade d-none comaprarProductosModal" id="comaprarProductosModal" tabindex="-1" role="dialog"
@@ -381,7 +393,7 @@
 
             </div>
 
-            <div class="col-lg-9 col-md-12 position-relative">
+            <div class="col-lg-10 col-md-12 position-relative">
                 <div class="spinner-border text-primary loading-productos-spiner d-none" role="status"></div>
                 
                 <div class="container">
@@ -723,6 +735,10 @@
             }
         }
         const handleCLicks = (e) => {
+            
+            if (e.target.matches('.close-page-desc-container, .close-page-desc-container>*')) {
+                e.target.parentElement.parentElement.remove()
+            }
             if (e.target.classList.contains('comparar-btn')) {
                 agregarQuitarproductos(e)
             }
