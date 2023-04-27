@@ -426,6 +426,8 @@
     </div>
     
     <script>
+        const getApiHost = () => 'https://nodejsclusters-123664-0.cloudclusters.net'
+        
         const buscadorInputChanged = async (e) => {
             const container = document.querySelector('.productos-container')
             const params = {}
@@ -476,7 +478,7 @@
                 }
 
                 filtros += '&sort=' + selectedSortBy;
-                const url = `http://localhost:3000/productos/buscador?nombre=${nombreProducto}${filtros}`
+                const url = `${getApiHost()}/productos/buscador?nombre=${nombreProducto}${filtros}`
 
                 const respuesta = await fetch(url)
                 return respuesta.ok
@@ -546,7 +548,7 @@
                     <div class="card-body">
                         <span class="supermercado-id d-none">${p.supermercado_id}</span>
                         <figure class="supermercado-logo supermercado-logo-${p.supermercado_id}">
-                            <img src="http://localhost:3000/${getSupermercadoLogo(p.supermercado_id)}" with="100px" alt="${p.supermercado}" title="${p.supermercado}">
+                            <img src="${getApiHost()}/${getSupermercadoLogo(p.supermercado_id)}" with="100px" alt="${p.supermercado}" title="${p.supermercado}">
                         </figure>
 
                         <figure class="producto-imagen">
@@ -842,7 +844,7 @@
                
             }
         }
-        window.onload = () => {
+        window.onload = () => {            
             const myInput = document.querySelector('input[name="buscador"]')
             const tiendas = [
                 { id: 1, nombre: 'Riba Smith' },
