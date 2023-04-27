@@ -1,42 +1,59 @@
+<!DOCTYPE html>
 {% extends "layout.html" %} 
 {% load static %}
-
 {% block body %}
     <body>
+        <section class="hidden">
         <div class="container">
-            <div class="content-wrapper">
-                <div class="content">
-                    <h1 class="headers">Haz tus compras de forma más inteligente con PalBolsillo, tu aliado en comparación de productos.</h1>
-                    <p class="p">
-                        ¡Únete a nuestra innovadora plataforma panameña de Comparación de Productos y encuentra la mejor opción para tus compras! 
-                        Con nuestra herramienta única, podrás comparar productos de manera fácil y rápida, garantizando que obtengas el mejor precio y 
-                        la mejor calidad en tus compras. 
-                    </p>
-                    <br>
-                    <a>
-                        <button>¡Compara y ahorra con PalBolsillo!</button>
-                    </a>
-                </div>
-                <div class="image-wrapper">
-                    <img src="{% static 'img/carrito.png' %}" alt="Image">
-                </div>
+            <div class="content">
+                <h1 class="headers">Haz tus compras de forma más inteligente con PalBolsillo, tu aliado en comparación de productos.</h1>
+                <p class="p">
+                    ¡Únete a nuestra innovadora plataforma panameña de Comparación de Productos y encuentra la mejor opción para tus compras! 
+                    Con nuestra herramienta única, podrás comparar productos de manera fácil y rápida, garantizando que obtengas el mejor precio y 
+                    la mejor calidad en tus compras. 
+                </p>
+                <br>
+                <a href="{% url 'palbolsillo' %}">
+                    <button>¡Compara y ahorra con PalBolsillo!</button>
+                </a>
             </div>
+            <img src="{% static 'img/carrito.png' %}" alt="Image">
         </div>
+        </section>
+        <section class="hidden">
         <div class="container-1">
-            <div class="content-wrapper-1">
-                <div class="content-1">
-                    <h1 class="headers">Palbolsillo, la mejor opción para ahorrar en tus compras de supermercado</h1>
-                    <p class="p">
-                        En nuestro sitio encontrarás los supermercados más cercanos a tu hogar en Panamá con los mejores precios 
-                        para que puedas hacer tus compras de manera más eficiente y económica. Ofrecemos una amplia selección de tiendas de alta calidad para que puedas encontrar exactamente lo que necesitas al alcance de tu mano. 
-                        ¡Ahorra tiempo y dinero al comprar en los supermercados más cercanos a ti! ¡Explora ahora para descubrir cómo podemos ayudarte a ahorrar más para tu bolsillo!
-                    </p>
-                    <br>
+            <div class="content-1">
+                <h1 class="headers">Palbolsillo, la mejor opción para ahorrar en tus compras de supermercado</h1>
+                <p class="p">
+                    En nuestro sitio encontrarás los supermercados más cercanos a tu hogar en Panamá con los mejores precios 
+                    para que puedas hacer tus compras de manera más eficiente y económica.
+                </p>
+                <p>
+                    Ofrecemos una amplia selección de tiendas de alta calidad para que puedas encontrar exactamente lo que necesitas al alcance de tu mano. 
+                    ¡Ahorra tiempo y dinero al comprar en los supermercados más cercanos a ti! ¡Explora ahora para descubrir cómo podemos ayudarte a ahorrar más para tu bolsillo!
+                </p>
+            </div> 
+            <img src="{% static 'img/canasta.png' %}" alt="Image"> 
+        </div>
+        </section>
+        <section class="hidden">
+            <video autoplay muted onended="this.controls=false;" width="1300" height="720" playsinline>
+                <source src="{% static 'img/graficas.mp4' %}" autoplay type="video/mp4">
+            </video>
+        </section>
+        <section class="hidden">
+            <div class="subscribe">
+                <h2 class="subscribe__title">Sigamos en contacto</h2>
+                <p class="subscribe__copy">Suscríbase para mantenerse al día con noticias frescas y actualizaciones emocionantes. ¡Prometemos no enviarte spam!</p>
+                <div class="form">
+                    <input type="email" class="form__email" placeholder="Introduce tu dirección de correo electrónico" />
+                    <button class="form__button">Enviar</button>
                 </div>
-                <div class="image-wrapper-1">
-                    <img src="{% static 'img/canasta.png' %}" alt="Image">
+                <div class="notice">
+                    <input type="checkbox">
+                    <span class="notice__copy">Acepto que mi dirección de correo electrónico se almacene y se utilice para recibir boletines mensuales.</span>
                 </div>
             </div>
-        </div>
+            </section>
     </body>
 {% endblock %}

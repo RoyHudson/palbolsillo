@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% extends 'layout.html' %}
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Pal-Bolsillo! - Team</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="{% static 'js/team.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    </head>
+    {% block body %}
+    <h1>¿Quienes Somos?</h1>
+    <div class="img-container">
+        <div class="img-module1">
+            <img  id="image-group" src="{% static 'img/group.png' %}">
+            <div id="quienes-somos">
+                <h3>#YoSoyUIP</h3>
+                <p>
+                    Somos un grupo de estudiantes de la Universidad Interamericana, especializados en la materia de Base de Datos II, y estamos emocionados de presentarles nuestro proyecto.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="img-module2">
+            <div id="objetivo">
+                <h3>Objetivos</h3>
+                <ul>
+                    <li>Objetivo es proporcionar una herramienta eficiente que ayude a los panameños a manejar su presupuesto de manera efectiva y ahorrar dinero.</li>
+                    <li>Mejorar nuestras habilidades de desarrollo y habilidades blandas mientras ofrecemos una solución útil a nuestra comunidad.</li>
+                    <li>Compartir y crear nuevas experiencias.</li>
+                </ul>
+            </div>
+            <img id="image-salon" src="{% static 'img/salon.png' %}">
+        </div>
+    </div>
+    <h1>Equipo de Desarrollo</h1>
+   <div class="container-team">
+        <div class="develop-team">
+            <div id="roy">
+                <img src="{% static 'img/roy-happy.png' %}" alt="Logo">
+                <h2>
+                    Roy Hudson
+                </h2>
+                <h3>
+                    Front-End
+                </h3>
+                <p>
+                    Coordinador 
+                </p>
+                <div class="socialmedia">
+                    <a href="https://github.com/RoyHudson"><i class="fab fa-github fa-2xl fa-flip" style="--fa-animation-duration: 4s; color:black;"></i></a>
+                    <a href="https://www.linkedin.com/in/roy-hudson-55a01a175/"><i class="fab fa-linkedin fa-2xl fa-flip" style="--fa-animation-duration: 4s; color: #0274b3; margin-left: 20px;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="develop-team">
+            <div id="sergio">
+                <img src="{% static 'img/sergio-png.png' %}" alt="Logo">
+                <h2>
+                    Sergio Clements
+                </h2>
+                <h3>
+                    Back-End
+                </h3>
+                <p>
+                    Coordinador
+                </p>
+                <div class="socialmedia">
+                    <a href="https://www.linkedin.com/in/sergio-clements-250a8b11b/"><i class="fab fa-linkedin fa-2xl fa-flip" style="--fa-animation-duration: 4s; color: #0274b3;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="develop-team">
+            <div id="nico">
+                <img src="{% static 'img/nico.png' %}" alt="Logo">
+                <h2>
+                    Nicolas Garcia
+                </h2>
+                <h3>
+                    Base de datos
+                </h3>
+                <p>
+                    Coordinador
+                </p>
+                <div class="socialmedia">
+                    <a href="www.linkedin.com/in/nicolas-garcía-quintero-5002b819a"><i class="fab fa-linkedin fa-2xl fa-flip" style="--fa-animation-duration: 4s; color: #0274b3;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="develop-team">
+            <div id="henry">
+                <img src="{% static 'img/henry.png' %}" alt="Logo">
+                <h2>
+                    Henry Carrera
+                </h2>
+                <h3>
+                    Infraestructura
+                </h3>
+                <p>
+                    Coordinador
+                </p>
+                <div class="socialmedia">
+                </div>
+            </div>
+        </div>
+   </div>
+   <div class="container-team">
+    <div class="develop-team">
+        <div id="braulio">
+            <img src="{% static 'img/braulio.png' %}" alt="Logo">
+            <h2>
+                Braulio Rodriguez
+            </h2>
+            <h3>
+                Base de Datos
+            </h3>
+            <p>
+                Desarrollador
+            </p>
+            <div class="socialmedia">
+                <a href="https://github.com/BraulioRodriguez"><i class="fab fa-github fa-2xl fa-flip" style="--fa-animation-duration: 4s; color:black;"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="develop-team">
+        <div id="dylan">
+            <img src="{% static 'img/dylan.png' %}" alt="Logo">
+            <h2>
+                Dylan Perez
+            </h2>
+            <h3>
+                Front-End
+            </h3>
+            <p>
+                Desarrollador
+            </p>
+            <div class="socialmedia">
+                <a href="https://www.linkedin.com/in/dylan-perez-hesoyam/"><i class="fab fa-linkedin fa-2xl fa-flip" style="--fa-animation-duration: 4s; color: #0274b3;"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="develop-team">
+        <div id="henry-1">
+            <img src="{% static 'img/henry-1.png' %}" alt="Logo">
+            <h2>
+                Henry Cardenas
+            </h2>
+            <h3>
+                Front-End
+            </h3>
+            <p>
+                Desarrollador
+            </p>
+            <div class="socialmedia">
+            </div>
+        </div>
+    </div>
+    <div class="develop-team">
+        <div id="erick">
+            <img src="{% static 'img/erick.png' %}" alt="Logo">
+            <h2>
+                Erick Gonzalez
+            </h2>
+            <h3>
+                Front-End
+            </h3>
+            <p>
+                Desarrollador
+            </p>
+            <div class="socialmedia">
+                <a href="https://github.com/EddoErick"><i class="fab fa-github fa-2xl fa-flip" style="--fa-animation-duration: 4s; color:black;"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<h1>Equipo de Marketing</h1>
+   <div class="container-team">
+        <div class="develop-team">
+            <div id="thalia">
+                <img src="{% static 'img/thalia.png' %}" alt="Logo">
+                <h2>
+                    Thalia Delgado 
+                </h2>
+                <h3>
+                    Marketing
+                </h3>
+                <p>
+                    Coordinadora de Marketing
+                </p>
+                <div class="socialmedia">
+                    <a href="http://linkedin.com/in/thalia-delgado-b43578260"><i class="fab fa-linkedin fa-2xl fa-flip" style="--fa-animation-duration: 4s; color: #0274b3;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="develop-team">
+            <div id="dayan">
+                <img src="{% static 'img/dayan.png' %}" alt="Logo">
+                <h2>
+                    Dayan Lu
+                </h2>
+                <h3>
+                    Marketing
+                </h3>
+                <p>
+                    Productor de video
+                </p>
+                <div class="socialmedia">
+                </div>
+            </div>
+        </div>
+        <div class="develop-team">
+            <div id="guille">
+                <img src="{% static 'img/guille.png' %}" alt="Logo">
+                <h2>
+                    Guillermo Arjona
+                </h2>
+                <h3>
+                    Marketing
+                </h3>
+                <p>
+                    Comunity Manager
+                </p>
+                <div class="socialmedia">
+                </div>
+            </div>
+        </div>
+        <div class="develop-team">
+            <div id="jorge">
+                <img src="{% static 'img/jorge.png' %}" alt="Logo">
+                <h2>
+                    Jorge Galvez
+                </h2>
+                <h3>
+                    Marketing
+                </h3>
+                <p>
+                    Fotografo / Diseñador
+                </p>
+                <div class="socialmedia">
+                </div>
+            </div>
+        </div>
+   </div>
+<h1>Profesor Facilitador</h1> 
+<div class="container-team">
+    <div class="develop-team">
+        <div id="mayron">
+            <img src="{% static 'img/mayron.png' %}" alt="Logo">
+            <h2>
+                Maryon Torres
+            </h2>
+            <h3>
+                Scrum Master
+            </h3>
+            <p>Ingeniero en Sistemas Computacionales. CEO Actual en la empresa de soluPrime y Arquitecto de soluciones.</p>
+        </div>
+    </div>
+</div>
+    {% endblock %}
+    <script src="{% static 'js/team.js' %}"></script>
+</html>

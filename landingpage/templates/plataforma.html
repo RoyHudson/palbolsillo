@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pal bolsillo</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0
+        ,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/build/md5.min.js"></script>
+    <script src="https://kit.fontawesome.com/d018e24280.js" crossorigin="anonymous"></script>
+
+    <style>
+        .no-script-msg {
+            font-size: 25px;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            right: 25%;
+            bottom: 25%;
+            margin: auto;
+        }
+
+        .buscador-productos label {
+            color: #333;
+            font-size: 15px;
+        }
+
+        .main-label {
+            font-size: 18px;
+        }
+
+        .buscador-tiend label,
+        .buscador-productos label,
+        .buscador-categorias label {
+            font-size: 15px;
+        }
+
+        .barra-inferior {
+            position: fixed;
+            background-color: #222222;
+            color: #fff;
+            bottom: 0;
+            padding: 18px;
+            width: 100%;
+            z-index: 9999;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .agregaste-nproductos {
+            font-size: 20px;
+            line-height: 20px;
+            vertical-align: middle;
+            margin: auto 0;
+        }
+
+        .loading-productos-spiner {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            right: 25%;
+            margin: auto;
+        }
+
+        .buscador-productos>div {
+            padding-bottom: 20px;
+            border-bottom: 2px solid #edf1f5;
+        }
+        .comaprarProductosModal .modal-body{
+            overflow-x: scroll;
+        }
+        .comaprarProductosModal .producto{
+            margin-right: 35px;
+        }
+        .comaprarProductosModal .producto button{
+            display: none;
+        }
+        .reiniciar-comparador{
+            cursor: pointer;
+        }
+        .comaprarProductosModal .modal-body{
+            background: beige;
+        }
+        .comaprarProductosModal .modal-footer{
+            justify-content: initial;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            display: block;
+        }
+        .ganador-comparacion{
+            margin-top: auto;
+        }
+        .productos-container{
+            padding-bottom: 75px;
+        }
+        .agregaste-nproductos{
+            padding-bottom: 12px;
+        }
+        figure.supermercado-logo img {
+            max-height: 50px;
+            width: auto;
+        }
+        .mostrar-filtros{
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+        }
+       
+        @media screen and (max-width: 991px) {     
+            
+            .buscador-tienda-cont,
+            .buscador-categoria-cont,
+            .sort-container{
+                display: none !important
+            }  
+            .mostrando-filtros-m .buscador-tienda-cont,
+            .mostrando-filtros-m .buscador-categoria-cont,
+            .mostrando-filtros-m .sort-container{
+                display: block !important;
+                background: #f8f9fa;
+                padding: 20px 30px;
+            }   
+            .mostrando-filtros-m .buscador-productos,
+            .mostrando-filtros-m .buscador-tienda-cont,
+            .mostrando-filtros-m .buscador-categoria-cont{
+                margin-bottom: 0 !important;
+            }
+            .producto-imagen{
+                margin:0
+            }  
+            .producto-imagen {
+                text-align: center;
+            }  
+            figure.supermercado-logo img {
+                max-height: 35px;
+                width: auto;
+            }
+            figure.supermercado-logo-4 img{
+                max-height:45px;
+            }
+
+        }     
+        @media screen and (min-width: 992px) {         
+            .buscador-productos {
+                position: sticky;
+                top: 0;
+                left: 0;
+                height: 100%;
+            }
+
+            .supermercado-logo img {
+                width: 100%;
+                max-width: 75px;
+                height: auto
+            }
+
+            .supermercado-logo-1 img {
+                max-width: 115px;
+            }
+            figure.producto-imagen {
+                height: 155px;
+                overflow: hidden;
+            }
+            h6.producto-titulo {
+                height: 80px;
+            }
+            .supermercado-logo {
+                min-height: 46px;
+            }
+        }
+        button.btn.btn-danger.btn-block.w-100.comparar-btn {
+            background: #91b1a2;
+            border: #91b1a2;
+        }
+        button.btn.btn-block.w-100.comparar-btn.btn-primary {
+            background: #3dab78;
+            border-color: #3dab78;
+        }
+    .footer {
+    color: black;
+    text-align: center;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 800;
+  }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'palbolsillo' %}">
+            <img src="{% static 'img/pocket.png' %}" alt="" width="50" height="50" class="d-inline-block align-text-top">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'index' %}">Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'team' %}">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'antojitos' %}">Antojitos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ubica tu Super!</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <br />
+    <br />
+
+    <div class="container">
+
+        <div class="modal fade d-none comaprarProductosModal" id="comaprarProductosModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalXLLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title comaprarProductosModalLabel" id="comaprarProductosModalLabel">Comparando <strong class="text-primary">0</strong> productos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex">
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="ganador-comparacion" id="ganador-comparacion"></div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade d-none"></div>
+
+
+        <div class="barra-inferior d-none">
+            <div class="container">
+                <div class="row">
+                    <div class="d-lg-flex justify-content-around">
+                        <div class="agregaste-nproductos pe-3">Agregaste <strong class="nproductos-val">0</strong>
+                            producto(s) a la comparación</div>
+                        <div class="barra-inferior-actions">
+                            <div class="px-4 py-sm-4 d-inline-block reiniciar-comparador">
+                                <u>Reiniciar</u>
+                            </div>
+
+                            <button id="comparar" type="button" class="btn btn-primary ml-3">Ver comparación</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-3 mb-3 buscador-productos">
+                <div class="input-group mb-3">
+
+                    <div class="py-2 pe-3">
+                        <strong class="main-label">Buscador</strong>
+                    </div>
+
+                    <div>
+                        <input type="text" class="form-control" name="buscador" id="buscador"
+                            placeholder="Nombre del producto..." aria-label="Buscar productos"
+                            aria-describedby="button-addon2">
+                    </div>
+                </div>
+                
+                <button type="button" class="btn btn-light  d-md-none mostrar-filtros">Filtrar</button>
+
+                <div class="container buscador-tienda-cont mb-3">
+                    <div class="row">
+                        <div class="col-12 buscador-tienda p-0">
+                            <div class="py-2">
+                                <strong class="main-label">Supermercados</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container buscador-categoria-cont mb-3">
+                    <div class="row">
+                        <div class="col-12 buscador-categoria p-0">
+                            <div class="py-2">
+                                <strong class="main-label">Categorias</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-9 position-relative">
+                <div class="spinner-border text-primary loading-productos-spiner d-none" role="status"></div>
+                <div class="container">
+                    <div class="row sort-container d-flex justify-content-end">
+                        <div class="sort-container-inside col-lg-4">
+
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 productos-container">
+                        <div class="col-md-12">
+
+                        </div>
+                    </div>
+                </div>
+
+                <noscript class="no-script-msg">
+                    Necesitas un navegador compatible con JavaScript para ver este contenido.
+                    <br />
+                    Descarga: <a href="https://www.google.com/intl/es_es/chrome/" target="_blank" rel="noopener">Google
+                        Chrome</a>
+                </noscript>
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const buscadorInputChanged = async (e) => {
+            const container = document.querySelector('.productos-container')
+            const params = {}
+            const { nombreProducto = '', selectedSortBy, checkboxes } = getSearchParams()
+
+            if (e) {
+                params.nombreProducto = e.target.value
+            }
+            else {
+                params.nombreProducto = nombreProducto
+            }
+
+            params.selectedSortBy = selectedSortBy
+            params.checkboxes = checkboxes
+
+            console.log(params.nombreProducto.length)
+            if (params.nombreProducto.length < 3) {
+                console.log('escribe al menos 3 caracteres para continuar')
+                return
+            }
+
+            toggleProductosSpiner()
+
+            container.innerHTML = ''
+
+            const productos = await fetchProductos(params)
+            productos.forEach((producto) => {
+                container.innerHTML += productoHtml(producto)
+            })
+
+            toggleProductosSpiner()
+            lazyLoadImages()
+            window.addEventListener('scroll', lazyLoadImages)
+        }
+        const fetchProductos = async (params) => {
+            try {
+                const { nombreProducto, checkboxes = [], selectedSortBy = '' } = params
+                let filtros = ''
+
+                if (checkboxes.length > 0) {
+                    filtros = checkboxes.map((cb) => {
+                        return '&' + Object.keys(cb) + '=' + Object.values(cb)
+                    }).join().replace(/,/g, '')
+                }
+
+                filtros += '&sort=' + selectedSortBy;
+                const url = `http://localhost:3000/productos/buscador?nombre=${nombreProducto}${filtros}`
+
+                const respuesta = await fetch(url)
+                return respuesta.ok
+                    ? productos = await respuesta.json()
+                    : null
+            }
+            catch (e) {
+                console.log(e)
+                return null
+            }
+        }
+        const checkboxChanged = async () => {
+            const container = document.querySelector('.productos-container')
+            container.innerHTML = ''
+            toggleProductosSpiner()
+
+            const params = getSearchParams()
+            const productos = await fetchProductos(params)
+            productos.forEach((producto) => {
+                container.innerHTML += productoHtml(producto)
+            })
+
+            toggleProductosSpiner()
+            lazyLoadImages()
+            window.addEventListener('scroll', lazyLoadImages)
+            return true
+        }
+        const selectChanged = async (e) => {
+            await checkboxChanged()
+        }
+        const getSearchParams = () => {
+            const params = {}
+
+            const defaultValues = ['arroz', 'lentejas', 'atun', 'frijol', 'harina', 'azúcar', 'aceite', 'pasta', 'huevos', 'leche', 'queso', 'carne molida', 'pollo', 'pescado', 'tomate', 'cebolla', 'zanahoria', 'papa', 'plátano', 'naranja', 'manzana', 'piña', 'sandía', 'melón', 'limon', 'culantro', 'vinagre', 'mayonesa', 'mostaza', 'café', 'azúcar morena', 'avena', 'cereal', 'poroto', 'sardina', 'camaron', 'salmon', 'jamon', 'aguacate', 'salchicha', 'macarron', 'cerdo', 'mantequilla', 'yogurt', 'mortadela']
+
+            const buscadorhtml = document.querySelector('input[name="buscador"]')
+            const defaultNombreProducto = defaultValues[Math.floor(Math.random() * defaultValues.length)]
+            const checkedCheckboxes = document.querySelectorAll('.buscador-categoria input:checked, .buscador-tienda input:checked')
+            const selectedSortBy = document.querySelector("#ordenar-por").value
+            let nombreProducto = ''
+
+            if (buscadorhtml && buscadorhtml.value.length >= 3) {
+                nombreProducto = buscadorhtml.value
+            }
+            else if (buscadorhtml.value.length == 0) {
+                nombreProducto = defaultNombreProducto
+            }
+            else {
+                nombreProducto = ''
+            }
+
+            if (nombreProducto === defaultNombreProducto) buscadorhtml.value = nombreProducto
+
+            params.nombreProducto = nombreProducto
+            params.selectedSortBy = selectedSortBy
+            params.checkboxes = [...checkedCheckboxes].map(ch => {
+                return ch.id.includes('tienda')
+                    ? { tienda: ch.value }
+                    : { categoria: ch.value }
+            })
+            return params
+        }
+        const productoHtml = (p) => {
+            return `
+             <div class="producto col-lg-3 col-md-6 mb-5" }>
+                <div class="card">
+                    <div class="card-body">
+                        <span class="supermercado-id d-none">${p.supermercado_id}</span>
+                        <figure class="supermercado-logo supermercado-logo-${p.supermercado_id}">
+                            <img src="http://localhost:3000/${getSupermercadoLogo(p.supermercado_id)}" with="100px" alt="${p.supermercado}" title="${p.supermercado}">
+                        </figure>
+
+                        <figure class="producto-imagen">
+                            <img data-src="${p.imagen}" width="100%">
+                        </figure>
+                        <h6 class="producto-titulo">${p.producto}</h6>   
+                        
+                        <div class="producto-precio">
+                            <p>$${p.precio}</p>
+                            
+                            <button type="button" class="btn btn-danger btn-block w-100 comparar-btn">Comparar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+             `
+        }
+        const crearCategoriasCheckboxHtml = (categorias) => {
+            const container = document.querySelector('.buscador-categoria')
+
+            categorias.forEach(categoria => {
+                const checkbox = document.createElement('div')
+                checkbox.classList.add('form-check', 'p-0')
+
+                const wrapper = document.createElement('div')
+                wrapper.classList.add('d-flex', 'justify-content-between')
+
+                const input = document.createElement('input')
+                input.classList.add('form-check-input')
+                input.type = 'checkbox'
+                input.value = categoria.id
+                input.id = `categoria-${categoria.id}`
+                input.name = `categoria-${categoria.nombre.toLowerCase().replace(' ', '-')}`
+
+                const label = document.createElement('label')
+                label.classList.add('form-check-label', 'text-uppercase')
+                label.htmlFor = `categoria-${categoria.id}`
+                label.innerText = categoria.nombre
+
+                wrapper.appendChild(label)
+                wrapper.appendChild(input)
+
+                checkbox.appendChild(wrapper)
+                container.appendChild(checkbox)
+            })
+        }
+        const crearTiendasCheckboxHtml = (tiendas) => {
+            const container = document.querySelector('.buscador-tienda')
+
+            tiendas.forEach(tienda => {
+                const checkbox = document.createElement('div')
+                checkbox.classList.add('form-check', 'p-0')
+
+                const wrapper = document.createElement('div')
+                wrapper.classList.add('d-flex', 'justify-content-between')
+
+                const input = document.createElement('input')
+                input.classList.add('form-check-input')
+                input.type = 'checkbox'
+                input.value = tienda.id
+                input.id = `tienda-${tienda.id}`
+                input.name = `tienda-${tienda.nombre.toLowerCase().replace(' ', '-')}`
+
+                const label = document.createElement('label')
+                label.classList.add('form-check-label', 'text-uppercase')
+                label.htmlFor = `tienda-${tienda.id}`
+                label.innerText = tienda.nombre
+
+                wrapper.appendChild(label)
+                wrapper.appendChild(input)
+
+                checkbox.appendChild(wrapper)
+                container.appendChild(checkbox)
+            });
+        };
+        const crearSortSelectHtml = (sortOptions) => {
+            const label = document.createElement('label')
+            label.classList.add('form-check-label', 'text-uppercase');
+            label.textContent = ''
+            label.setAttribute('for', 'ordenar-por')
+
+            const select = document.createElement('select')
+            select.classList.add('form-select')
+            select.setAttribute('id', 'ordenar-por')
+            select.setAttribute('name', 'ordenar-por')
+
+            for (const option of sortOptions) {
+                const optionElem = document.createElement('option')
+                optionElem.setAttribute('value', option.value)
+                optionElem.textContent = option.label
+                select.appendChild(optionElem)
+            }
+
+            const container = document.querySelector('.sort-container .sort-container-inside')
+            container.classList.add('d-flex', 'justify-content-end')
+            container.appendChild(label)
+            container.appendChild(select)
+        }
+        const getSupermercadoLogo = (supermercado_id) => {
+            let i = supermercado_id - 1
+            const logos = [
+                '/images/riba-smith.png',
+                '/images/xtra.png',
+                '/images/machetazo.png',
+                '/images/supercarnes.png',
+                '/images/pricesmart.png'
+            ]
+            return logos[i]
+        }
+        const getSupermercadoNombre= (supermercado_id) => {
+            let i = supermercado_id - 1
+            const supermercados = [
+                'Riba Smith',
+                'Xtra',
+                'El Machetazo',
+                'Supercarnes',
+                'Pricesmart'
+            ]
+            return supermercados[i]
+        }
+        
+        const isInViewport = (elem) => {
+            var bounding = elem.getBoundingClientRect()
+            return (bounding.top >= 0 && bounding.left >= 0 && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) && bounding.right <= (window.innerWidth || document.documentElement.clientWidth));
+        };
+        const toggleProductosSpiner = () => {
+            const el = document.querySelector('.loading-productos-spiner')
+            if (!el) return
+
+            if (el.classList.contains('d-none')) el.classList.remove('d-none')
+            else el.classList.add('d-none')
+        }
+        const lazyLoadImages = () => {
+            const lazyImages = document.querySelectorAll('[data-src]');
+            lazyImages.forEach(function (image, index) {
+                if (isInViewport(image)) {
+                    if (lazyImages[index].getAttribute('data-src')) {
+                        const src = image.getAttribute('data-src');
+                        image.setAttribute('src', src);
+                        image.removeAttribute('data-src');
+                    }
+                }
+            });
+        }
+        const agregarQuitarproductos = (e) => {
+            const el = e.target
+            const barraInferior = document.querySelector('.barra-inferior')
+            const cantidadProdAgregados = document.querySelector('.barra-inferior .nproductos-val')
+            const productoContainer = el.parentElement.parentElement.parentElement.parentElement
+
+            const key =
+                productoContainer.querySelector('.producto-titulo').textContent
+                + productoContainer.querySelector('.producto-precio p').textContent
+                + productoContainer.querySelector('.producto-imagen img').getAttribute('src')
+
+            const producto = {
+                key: md5(key),
+                html: productoContainer.outerHTML,
+                precio: productoContainer.querySelector('.producto-precio p').textContent,
+                supermercado: productoContainer.querySelector('.supermercado-id').textContent,
+                nombre: productoContainer.querySelector('.producto-titulo').textContent
+            }
+
+            //agregar panel a lista de comapraciom
+            if (el.classList.contains('btn-danger')) {
+                el.classList.remove('btn-danger')
+                el.classList.add('btn-primary')
+                el.innerHTML = 'En comparación'
+
+                const listaComparacion = JSON.parse(localStorage.getItem('listaComparacion')) || []
+                listaComparacion.push(producto);
+
+                barraInferior.classList.remove('d-none')
+                cantidadProdAgregados.textContent = listaComparacion.length
+
+                localStorage.setItem('listaComparacion', JSON.stringify(listaComparacion))
+
+            }
+            //quitar elemento de comparacion
+            else {
+                el.classList.add('btn-danger')
+                el.classList.remove('btn-primary')
+                el.innerHTML = 'Comparar'
+
+                const listaComparacion = JSON.parse(localStorage.getItem('listaComparacion')) || []
+                const newListaComparacion = listaComparacion.filter(obj => { return obj.key !== producto.key })
+                localStorage.setItem('listaComparacion', JSON.stringify(newListaComparacion))
+                cantidadProdAgregados.textContent = newListaComparacion.length
+            }
+        }
+        const handleCLicks = (e) => {
+            if (e.target.classList.contains('comparar-btn')) {
+                agregarQuitarproductos(e)
+            }
+            if(e.target.matches('.mostrar-filtros') || e.target.matches('.mostrar-filtros >*')){
+                const body = document.querySelector('body')
+
+                if (body.classList.contains('mostrando-filtros-m')) body.classList.remove('mostrando-filtros-m')
+                else body.classList.add('mostrando-filtros-m')
+            }
+            if( e.target.matches('.reiniciar-comparador') || e.target.matches('.reiniciar-comparador > *')){
+                
+                if(confirm('¿Estás seguro?') === false) return
+
+                localStorage.removeItem('listaComparacion')
+                const cantidadProdAgregados = document.querySelector('.barra-inferior .nproductos-val')
+                const barraInferior = document.querySelector('.barra-inferior')
+                barraInferior.classList.add('d-none')
+                cantidadProdAgregados.textContent=0
+               
+
+                document.querySelectorAll('.comparar-btn.btn-primary').forEach( el =>{
+                    el.classList.add('btn-danger')
+                    el.classList.remove('btn-primary')
+                    el.innerHTML = 'Comparar'
+                })
+                
+                
+            }
+            if (e.target.id == 'comparar') {
+                const comaprarProductosModal = document.querySelector('#comaprarProductosModal')
+                const modalBackDrop = document.querySelector('.modal-backdrop')
+                const comaprarProductosModalBody = document.querySelector('#comaprarProductosModal .modal-body')
+                const cantidadProductosContainer = document.querySelector('.comaprarProductosModalLabel strong')
+                const barraInferior = document.querySelector('.barra-inferior')
+                const ganadorComparacion = document.querySelector('#ganador-comparacion')
+                const listaComparacion = JSON.parse(localStorage.getItem('listaComparacion')) || []         
+
+                if (listaComparacion.length <=1 ){
+                    alert('Debes agregar al menos 2 productos')
+                    return 
+                }
+
+                barraInferior.classList.add('d-none')
+
+                comaprarProductosModalBody.innerHTML=''
+                comaprarProductosModal.classList.add('show', 'd-block')
+                comaprarProductosModal.classList.remove('d-none')
+
+                modalBackDrop.classList.add('show')
+                modalBackDrop.classList.remove('d-none')
+
+                       
+
+                let ganador= ''
+                let ganadorSuper= ''
+                let ganadorProducto= ''
+                let ganadorHtml= ''
+                let minPrecio=99999
+                listaComparacion.forEach( obj =>{
+                    comaprarProductosModalBody.innerHTML += obj.html
+                    let  auxPrecio = ( obj.precio.split('$')[1]);
+
+                    if( auxPrecio < minPrecio ){
+                        minPrecio = auxPrecio
+                        ganadorHtml = obj.html
+                        ganadorSuper = obj.supermercado
+                        ganadorProducto = obj.nombre
+                    }
+                }) 
+                cantidadProductosContainer.innerHTML=listaComparacion.length
+                
+                ganadorComparacion.innerHTML= `
+                    <h5>
+                        El ganador de la comparación es: <b class="text-primary">${getSupermercadoNombre(ganadorSuper)}</b>.
+                        <br />Precio del producto:<b class="text-primary"> $${minPrecio}</b> 
+                        
+                    </h5>
+                `
+
+
+            }
+            if (e.target.matches('#comaprarProductosModal .close, #comaprarProductosModal .close>*')) {
+                const comaprarProductosModal = document.querySelector('#comaprarProductosModal')
+                const modalBackDrop = document.querySelector('.modal-backdrop')
+                const barraInferior = document.querySelector('.barra-inferior')
+                barraInferior.classList.remove('d-none')
+
+                comaprarProductosModal.classList.remove('show')
+                comaprarProductosModal.classList.remove('d-block')
+                comaprarProductosModal.classList.add('d-none')
+
+                modalBackDrop.classList.remove('show')
+                modalBackDrop.classList.add('d-none')
+               
+            }
+        }
+        window.onload = () => {
+            const myInput = document.querySelector('input[name="buscador"]')
+            const tiendas = [
+                { id: 1, nombre: 'Riba Smith' },
+                { id: 2, nombre: 'Super Xtra' },
+                { id: 3, nombre: 'El Machetazo' },
+                { id: 4, nombre: 'Supercarnes' },
+                { id: 5, nombre: 'Pricesmart' },
+            ]
+            const categorias = [
+                { id: 1, nombre: 'Congelados' },
+                { id: 2, nombre: 'Licores' },
+                { id: 3, nombre: 'Frutas y Verduras' },
+                { id: 4, nombre: 'Despensa' },
+                { id: 5, nombre: 'Lácteos' },
+                { id: 6, nombre: 'Carnes y Embutidos' },
+                { id: 7, nombre: 'Jugos y bebidas' },
+                { id: 8, nombre: 'Panadería' }
+            ]
+            const sortOptions = [
+                { value: 'precio-mas-bajo', label: 'Precio más bajo' },
+                { value: 'precio-mas-alto', label: 'Precio más alto' },
+                { value: 'nombre-ascendente', label: 'Nombre ascendente' },
+                { value: 'nombre-descendente', label: 'Nombre descendente' },
+                { value: 'tienda-ascendente', label: 'Tienda A-Z' },
+                { value: 'tienda-descendente', label: 'Tienda Z-A' },
+            ]
+
+            /* laod html components */
+            crearTiendasCheckboxHtml(tiendas)
+            crearCategoriasCheckboxHtml(categorias)
+            crearSortSelectHtml(sortOptions)
+            buscadorInputChanged()
+            /* laod html components */
+
+            /* bind events */
+            if (myInput) myInput.addEventListener("change", buscadorInputChanged)
+
+            const checkboxes = document.querySelectorAll('.buscador-categoria input, .buscador-tienda input')
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', checkboxChanged)
+            })
+
+            const ordenarPorSelect = document.querySelector("#ordenar-por");
+            ordenarPorSelect.addEventListener("change", selectChanged)
+
+            window.addEventListener('click', handleCLicks);
+            /* bind events */
+
+            localStorage.removeItem('listaComparacion')
+        };
+    </script>
+    <footer class="footer">
+        <a href="#"><i class="fab fa-tiktok fa-2x fa-bounce"  style="--fa-animation-duration: 2s; color: black;"></i></a>
+        <a href="https://instagram.com/pal_bolsillo?igshid=YmMyMTA2M2Y="><i class="fab fa-instagram fa-2x fa-bounce" style="--fa-animation-duration: 1.5s; color: #c1558b; margin-left: 20px;"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-2x fa-bounce" style="--fa-animation-duration: 1s; color: #1c93e4; margin-left: 20px;"></i></a>
+        <br>
+        <br>
+        <p>© 2023 Pal Bolsillo. All rights reserved.</p>
+      </footer>
+</body>
+
+</html>

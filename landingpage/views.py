@@ -8,6 +8,15 @@ from .models import Profile
 def index(request):
     return render(request, 'index.html')
 
+def palbolsillo(request):
+    return render(request, 'plataforma.html')
+
+def antojitos(request):
+    return render(request, 'antojitos.html')
+
+def ubicate(request):
+    return render(request, 'ubicate.html')
+
 @login_required
 def home(request):
     return render(request, 'home.html', {'user': request.user})
@@ -45,3 +54,6 @@ def user_login(request):
         form = LoginForm()
     messages.error(request, 'Invalid email or password.')
     return render(request, 'login.html', {'form': form})
+
+def team(request):
+    return render(request, 'team.html')
